@@ -9,10 +9,10 @@
 [node name="Background" type="Sprite2D" parent="."]
 texture_filter = 2
 texture_repeat = 2
-position = Vector2(982, 1051)
 texture = ExtResource("1_j8job")
 region_enabled = true
 region_rect = Rect2(0, 0, 4000, 4000)
+metadata/_edit_lock_ = true
 
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 scale = Vector2(0.4, 0.4)
@@ -20,5 +20,5 @@ scale = Vector2(0.4, 0.4)
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="enemy_bandit" parent="Node2D" instance=ExtResource("3_j8job")]
-position = Vector2(-166, -3)
+position = Vector2(-150.99997, -1.0000001)
 scale = Vector2(0.4, 0.4)
