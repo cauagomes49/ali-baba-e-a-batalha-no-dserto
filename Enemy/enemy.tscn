@@ -18,3 +18,6 @@ hframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_px1sc")
+
+[node name="walkTimer" type="Timer" parent="."]
+unique_name_in_owner = true

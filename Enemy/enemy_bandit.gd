@@ -6,5 +6,6 @@ extends CharacterBody2D
 
 func _physics_process(delta: float):
 	var direction = global_position.direction_to(player.global_position)
-	velocity = direction*movement_speed
+	velocity = direction*movement_speed	
 	move_and_slide()
+	
