@@ -54,6 +54,7 @@ size = Vector2(56, 86.5)
 size = Vector2(81, 84)
 
 [node name="enemy_bandit" type="CharacterBody2D"]
+scale = Vector2(0.4, 0.4)
 motion_mode = 1
 script = ExtResource("1_px1sc")
 

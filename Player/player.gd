@@ -37,3 +37,4 @@ func movement():
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
 	hp -= damage
+	print(hp)
