@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://4bgt3ju8s8h5"]
+
+[ext_resource type="Texture2D" uid="uid://lrp5eli6p5nq" path="res://texture/shot.png" id="1_4pbce"]
+[ext_resource type="Script" uid="uid://cr1bn126s5yne" path="res://Player/Attack/shot.gd" id="1_jakry"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jakry"]
+size = Vector2(412.49982, 370)
+
+[node name="shot" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_jakry")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(919.99994, 409.99997)
+texture = ExtResource("1_4pbce")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(786.2496, 334.99994)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_jakry")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
