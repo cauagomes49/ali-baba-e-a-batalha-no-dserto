@@ -13,6 +13,7 @@ var shot = preload("res://Player/Attack/shot.tscn")
 #AttacksNodes
 @onready var shotTimer = get_node("%shotTimer")
 @onready var shotAttackTimer = get_node("%shotAttackTimer")
+@onready var score = $Pontos
 
 #Shot
 var shot_ammo = 0
@@ -35,6 +36,7 @@ func _physics_process(_delta: float):
 func _process(delta: float) -> void:
 	if hp <= 0:
 		game_over()
+	score.text = "Pontos: " + str(Autoscript.score)
 
 func attack():
 	if shot_level > 0:
@@ -104,8 +106,7 @@ func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 		enemy_close.erase(body)
 		
 
+
 func game_over():
-	var game_over_instance = game_over_scene.instantiate()
-	get_tree().current_scene.add_child(game_over_instance)
-	queue_free()
+	get_tree().change_scene_to_file("res://World/game_over.tscn")
 	

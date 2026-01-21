@@ -67,10 +67,10 @@ visible = false
 shape = SubResource("CircleShape2D_btcbx")
 
 [node name="Pontos" type="Label" parent="."]
-offset_left = 678.0
-offset_top = -438.0
-offset_right = 779.0
-offset_bottom = -415.0
+offset_left = 473.0
+offset_top = -311.0
+offset_right = 574.0
+offset_bottom = -288.0
 text = "Pontuação: 0"
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

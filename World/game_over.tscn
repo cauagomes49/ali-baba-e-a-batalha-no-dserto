@@ -1,10 +1,32 @@
-[gd_scene load_steps=2 format=3 uid="uid://dra0jqicwssk1"]
+[gd_scene load_steps=3 format=3 uid="uid://dra0jqicwssk1"]
 
 [ext_resource type="Texture2D" uid="uid://bel5rkmedmnw2" path="res://texture/WhatsApp Image 2026-01-21 at 13.00.39.jpeg" id="1_km17a"]
+[ext_resource type="Script" uid="uid://bl2f0dp376ow8" path="res://World/game_over.gd" id="1_sad6x"]
 
 [node name="Game Over" type="Node2D"]
+script = ExtResource("1_sad6x")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(321.00003, 179.5)
 scale = Vector2(0.49843758, 0.41852283)
 texture = ExtResource("1_km17a")
+metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tentar Novamente" type="Button" parent="CanvasLayer"]
+offset_left = 212.0
+offset_top = 127.0
+offset_right = 430.0
+offset_bottom = 162.0
+flat = true
+
+[node name="Sair" type="Button" parent="CanvasLayer"]
+offset_left = 229.0
+offset_top = 174.0
+offset_right = 413.0
+offset_bottom = 205.0
+flat = true
+
+[connection signal="pressed" from="CanvasLayer/Tentar Novamente" to="." method="_on_tentar_novamente_pressed"]
+[connection signal="pressed" from="CanvasLayer/Sair" to="." method="_on_button_pressed"]

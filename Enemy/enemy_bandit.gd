@@ -25,4 +25,5 @@ func _on_hurt_box_hurt(damage: Variant) -> void:
 	hp -= damage
 	if hp <= 0:
 		queue_free()
+		Autoscript.score +=1
 		

@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Ali Babá e a Batalha no Deserto"
-run/main_scene="uid://cgdqilcig8et6"
+run/main_scene="uid://dda16i1tlgrbq"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+Autoscript="*res://Utility/Autoscript.gd"
 
 [display]
 
