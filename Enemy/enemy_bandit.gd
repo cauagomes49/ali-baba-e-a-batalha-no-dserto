@@ -11,13 +11,14 @@ func _ready():
 	anim.play("walk")
 
 func _physics_process(_delta: float):
-	var direction = global_position.direction_to(player.global_position)
-	velocity = direction*movement_speed	
-	move_and_slide()
-	if direction.x < 0.01:
-		sprite.flip_h = true
-	elif direction.y > 0.01:
-		sprite.flip_h = false
+	if player:	
+		var direction = global_position.direction_to(player.global_position)
+		velocity = direction*movement_speed	
+		move_and_slide()
+		if direction.x < 0.01:
+			sprite.flip_h = true
+		elif direction.y > 0.01:
+			sprite.flip_h = false
 
 
 func _on_hurt_box_hurt(damage: Variant) -> void:

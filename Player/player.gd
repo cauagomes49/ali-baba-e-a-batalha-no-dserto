@@ -2,11 +2,13 @@ extends CharacterBody2D
 
 
 var movement_speed = 80.0
-var hp_max = 100
-var hp = 100
+var hp_max = 10
+var hp = 10
 
 #Attacks
 var shot = preload("res://Player/Attack/shot.tscn")
+@onready var game_over_scene = preload("res://World/game_over.tscn")  # Caminho para a cena de Game Over
+
 
 #AttacksNodes
 @onready var shotTimer = get_node("%shotTimer")
@@ -31,9 +33,8 @@ func _physics_process(_delta: float):
 	movement()
 
 func _process(delta: float) -> void:
-	pass
-	#if hp <= 0:
-		#game_over()
+	if hp <= 0:
+		game_over()
 
 func attack():
 	if shot_level > 0:
@@ -103,9 +104,8 @@ func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 		enemy_close.erase(body)
 		
 
-#func game_over():
-	# Carrega a cena de Game Over
-	#var game_over_instance = game_over_scene.instance()
-	#get_tree().current_scene.add_child(game_over_instance)
-	#queue_free()
+func game_over():
+	var game_over_instance = game_over_scene.instantiate()
+	get_tree().current_scene.add_child(game_over_instance)
+	queue_free()
 	
