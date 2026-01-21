@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 
-var movement_speed = 40.0
-var hp = 80
+var movement_speed = 80.0
+var hp_max = 100
+var hp = 100
 
 #Attacks
 var shot = preload("res://Player/Attack/shot.tscn")
@@ -29,6 +30,10 @@ func _ready() -> void:
 func _physics_process(_delta: float):
 	movement()
 
+func _process(delta: float) -> void:
+	pass
+	#if hp <= 0:
+		#game_over()
 
 func attack():
 	if shot_level > 0:
@@ -55,10 +60,6 @@ func movement():
 		
 	velocity = mov.normalized()*movement_speed
 	move_and_slide()
-
-
-
-
 
 
 func _on_hurt_box_hurt(damage: Variant) -> void:
@@ -100,4 +101,11 @@ func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
 func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 	if enemy_close.has(body):
 		enemy_close.erase(body)
+		
+
+#func game_over():
+	# Carrega a cena de Game Over
+	#var game_over_instance = game_over_scene.instance()
+	#get_tree().current_scene.add_child(game_over_instance)
+	#queue_free()
 	

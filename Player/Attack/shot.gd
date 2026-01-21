@@ -11,14 +11,17 @@ var target = Vector2.ZERO
 var angle = Vector2.ZERO
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var audio_player = $snd_play
 
 func _ready():
 	angle = global_position.direction_to(target)
-	rotation = angle.angle() + deg_to_rad(135)
+	rotation = angle.angle() + deg_to_rad(-135)
+	audio_player.play()
+
 	match level:
 		1:
 			hp = 1
-			speed = 1
+			speed = 200
 			damage = 5
 			knock_amount = 100
 			attack_size = 1.0

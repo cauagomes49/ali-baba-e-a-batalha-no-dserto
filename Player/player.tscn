@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpl0f76mh45cw"]
+[gd_scene load_steps=12 format=3 uid="uid://cpl0f76mh45cw"]
 
 [ext_resource type="Script" uid="uid://dubc5f864p00q" path="res://Player/player.gd" id="1_4ntmi"]
 [ext_resource type="Texture2D" uid="uid://q03xg8xe8ywm" path="res://texture/player.png" id="1_l8h54"]
 [ext_resource type="PackedScene" uid="uid://c3q8ocfc5bvwj" path="res://Utility/hurt_box.tscn" id="3_btcbx"]
+[ext_resource type="Script" uid="uid://blvf3j7s66mly" path="res://Player/heath_progress_bar.gd" id="4_gwnis"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ntmi"]
 radius = 18.0
@@ -14,7 +15,25 @@ size = Vector2(53, 124)
 [sub_resource type="CircleShape2D" id="CircleShape2D_btcbx"]
 radius = 372.26334
 
+[sub_resource type="Gradient" id="Gradient_btcbx"]
+offsets = PackedFloat32Array(0.9927536, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gwnis"]
+gradient = SubResource("Gradient_btcbx")
+width = 200
+height = 20
+
+[sub_resource type="Gradient" id="Gradient_k53q1"]
+offsets = PackedFloat32Array(0.9927536, 1)
+colors = PackedColorArray(0, 1, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fhl08"]
+gradient = SubResource("Gradient_k53q1")
+width = 200
+height = 20
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(322, 180)
 motion_mode = 1
 script = ExtResource("1_4ntmi")
 
@@ -27,6 +46,7 @@ hframes = 2
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_4ntmi")
 
@@ -36,6 +56,7 @@ wait_time = 0.1
 one_shot = true
 
 [node name="HurtBox" parent="." instance=ExtResource("3_btcbx")]
+visible = false
 collision_layer = 2
 collision_mask = 2
 
@@ -44,6 +65,7 @@ position = Vector2(-0.5, -10)
 shape = SubResource("RectangleShape2D_gwnis")
 
 [node name="Attack" type="Node2D" parent="."]
+visible = false
 
 [node name="shotTimer" type="Timer" parent="Attack"]
 unique_name_in_owner = true
@@ -59,7 +81,24 @@ collision_mask = 4
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetectionArea"]
+visible = false
 shape = SubResource("CircleShape2D_btcbx")
+
+[node name="Heath Bar" type="CanvasLayer" parent="."]
+
+[node name="HeathProgressBar" type="TextureProgressBar" parent="Heath Bar"]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.906
+anchor_right = 0.5
+anchor_bottom = 0.906
+offset_left = -98.0
+offset_top = -7.1600037
+offset_right = 102.0
+offset_bottom = 12.839996
+texture_under = SubResource("GradientTexture2D_gwnis")
+texture_over = SubResource("GradientTexture2D_fhl08")
+script = ExtResource("4_gwnis")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/shotTimer" to="." method="_on_shot_timer_timeout"]
