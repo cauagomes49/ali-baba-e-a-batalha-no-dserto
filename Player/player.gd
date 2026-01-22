@@ -37,6 +37,8 @@ func _process(delta: float) -> void:
 	if hp <= 0:
 		game_over()
 	score.text = "Pontos: " + str(Autoscript.score)
+	if Input.is_action_just_pressed("ui_cancel"):
+		get_tree().change_scene_to_file("res://World/game_over.tscn")
 
 func attack():
 	if shot_level > 0:

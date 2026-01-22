@@ -7,13 +7,16 @@
 
 [node name="World" type="Node2D"]
 
-[node name="Background" type="Sprite2D" parent="."]
-texture_filter = 2
-texture_repeat = 2
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(346, 174)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-7.6293945e-06, 0.9999924)
+scale = Vector2(1.8497111, 2.0632186)
 texture = ExtResource("1_j8job")
-region_enabled = true
-region_rect = Rect2(0, 0, 4000, 4000)
-metadata/_edit_lock_ = true
+centered = false
 
 [node name="Player" parent="." instance=ExtResource("2_8a836")]
 scale = Vector2(0.4, 0.4)

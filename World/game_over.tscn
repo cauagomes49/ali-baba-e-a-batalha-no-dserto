@@ -28,5 +28,13 @@ offset_right = 413.0
 offset_bottom = 205.0
 flat = true
 
+[node name="Pontos" type="Label" parent="."]
+unique_name_in_owner = true
+offset_left = 267.0
+offset_top = 270.0
+offset_right = 377.0
+offset_bottom = 293.0
+text = "Pontuação: 00"
+
 [connection signal="pressed" from="CanvasLayer/Tentar Novamente" to="." method="_on_tentar_novamente_pressed"]
 [connection signal="pressed" from="CanvasLayer/Sair" to="." method="_on_button_pressed"]

@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmtv4vpye4ora"]
+[gd_scene load_steps=3 format=3 uid="uid://bmtv4vpye4ora"]
 
+[ext_resource type="Script" uid="uid://cap43ocr301re" path="res://World/creditos.gd" id="1_gk2jt"]
 [ext_resource type="Texture2D" uid="uid://c32ia8iduew6w" path="res://texture/WhatsApp Image 2026-01-21 at 12.59.58.jpeg" id="1_msc5o"]
 
 [node name="Creditos" type="Node2D"]
+script = ExtResource("1_gk2jt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(319, 179.5)
 scale = Vector2(0.4153646, 0.35253906)
 texture = ExtResource("1_msc5o")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

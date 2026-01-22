@@ -1,0 +1,108 @@
+[gd_scene load_steps=17 format=3 uid="uid://d4gvi0ircftls"]
+
+[ext_resource type="Script" uid="uid://dj7igoau24p7m" path="res://Enemy/enemy_javali.gd" id="1_654w5"]
+[ext_resource type="Texture2D" uid="uid://duf32gi42mjp7" path="res://characteres/javalli.png" id="2_anlif"]
+[ext_resource type="PackedScene" uid="uid://c3q8ocfc5bvwj" path="res://Utility/hurt_box.tscn" id="3_xiilx"]
+[ext_resource type="PackedScene" uid="uid://cq82rtdecw4f0" path="res://Utility/hit_box.tscn" id="4_u1htq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1htq"]
+atlas = ExtResource("2_anlif")
+region = Rect2(0, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnp2l"]
+atlas = ExtResource("2_anlif")
+region = Rect2(240, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lgjsd"]
+atlas = ExtResource("2_anlif")
+region = Rect2(480, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gq1h"]
+atlas = ExtResource("2_anlif")
+region = Rect2(720, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mv36l"]
+atlas = ExtResource("2_anlif")
+region = Rect2(960, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y6rtl"]
+atlas = ExtResource("2_anlif")
+region = Rect2(1200, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8h7b"]
+atlas = ExtResource("2_anlif")
+region = Rect2(1440, 561, 240, 187)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1ovj"]
+atlas = ExtResource("2_anlif")
+region = Rect2(1680, 561, 240, 187)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00hps"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1htq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnp2l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lgjsd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gq1h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mv36l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y6rtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8h7b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1ovj")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiilx"]
+size = Vector2(149, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u1htq"]
+size = Vector2(227, 177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nnp2l"]
+
+[node name="enemy_javali" type="CharacterBody2D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_654w5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_00hps")
+animation = &"walk"
+frame_progress = 0.041252427
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(7, 22)
+shape = SubResource("RectangleShape2D_xiilx")
+
+[node name="HurtBox" parent="." instance=ExtResource("3_xiilx")]
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(9.5, 4.5)
+shape = SubResource("RectangleShape2D_u1htq")
+
+[node name="HitBox" parent="." instance=ExtResource("4_u1htq")]
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(11, 38.5)
+shape = SubResource("RectangleShape2D_nnp2l")
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

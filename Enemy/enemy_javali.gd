@@ -1,0 +1,28 @@
+extends CharacterBody2D
+
+@export var movement_speed = 60.0
+@export var hp = 5
+
+@onready var player = get_tree().get_first_node_in_group("player")
+@onready var sprite = $Sprite2D
+@onready var anim = $AnimatedSprite2D
+
+func _ready():
+	anim.play("walk")
+
+func _physics_process(_delta: float):
+	if player:	
+		var direction = global_position.direction_to(player.global_position)
+		velocity = direction*movement_speed	
+		move_and_slide()
+		if direction.x < 0.01:
+			sprite.flip_h = true
+		elif direction.y > 0.01:
+			sprite.flip_h = false
+
+
+func _on_hurt_box_hurt(damage: Variant) -> void:
+	hp -= damage
+	if hp <= 0:
+		queue_free()
+		Autoscript.score +=1
